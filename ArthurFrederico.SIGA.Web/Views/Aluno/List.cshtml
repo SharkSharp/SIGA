@@ -1,0 +1,119 @@
+﻿@model IEnumerable<ArthurFrederico.SIGA.Model.AlunoModel>
+
+@{
+    ViewBag.Title = "Aluno List";
+}
+
+<div class="login-box-title">
+    <span>List</span>
+</div>
+
+<div class="form-link">
+    @Html.ActionLink("Create New", "Create")
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CidadeId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpf)
+            </td>
+            <td>
+                @String.Format("{0}", (item.Sexo) ? "Masculino" : "Feminino");
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCadastro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade.Nome)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@using (Html.BeginForm("List", "Aluno", new { pagina = 1 }, FormMethod.Get))
+{
+    <div class="area-pesquisa-5">
+        <div class="cell-pesquisa-5">
+            @Html.TextBox("id", "", new { placeholder = "Código", @type = "search" })
+        </div>
+
+        <div class="cell-pesquisa-5">
+            @Html.TextBox("nome", "", new { placeholder = "Nome", @type = "search" })
+        </div>
+
+        <div class="cell-pesquisa-5">
+            @Html.TextBox("cpf", "", new { placeholder = "CPF", @type = "search" })
+        </div>
+
+        <div class="cell-pesquisa-5">
+            @Html.TextBox("dataNascimento", "", new { placeholder = "Data de Nascimento", @type = "search" })
+        </div>
+
+        <div class="cell-pesquisa-5">
+            @Html.TextBox("dataCadastro", "", new { placeholder = "Data de Cadastro", @type = "search" })
+        </div>
+    </div>
+    <div class="login-footer">
+        <button type="submit" id="login-button">Search</button>
+    </div>
+}
+
+<div class="pagination">
+    @Html.CreatePaginacaoLinks((ArthurFrederico.SIGA.Web.Models.Paginacao)ViewBag.Paginacao,
+    x => Url.Action("List", new {
+        pagina = x,
+        id = Request.Params["id"],
+        nome = Request.Params["nome"],
+        cpf = Request.Params["cpf"],
+        dataNascimento = Request.Params["dataNascimento"],
+        dataCadastro = Request.Params["dataCadastro"]
+    }))
+</div>

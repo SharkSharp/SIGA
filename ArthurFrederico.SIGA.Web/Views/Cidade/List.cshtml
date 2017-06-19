@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ArthurFrederico.SIGA.Model.CidadeModel>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="login-box-title">
+    <span>List</span>
+</div>
+
+<div class="form-link">
+    @Html.ActionLink("Create New", "Create")
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cep)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cep)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+@using (Html.BeginForm("List", "Cidade", new { pagina = 1 }, FormMethod.Get))
+{
+    <div class="area-pesquisa-3">
+        <div class="cell-pesquisa-3">
+        @Html.TextBox("nome", "", new { placeholder = "Nome", @type = "search" })
+        </div>
+
+        <div class="cell-pesquisa-3">
+        @Html.TextBox("estado", "", new { placeholder = "Estado", @type = "search" })
+        </div>
+
+        <div class="cell-pesquisa-3">
+        @Html.TextBox("cep", "", new { placeholder = "CEP", @type = "search" })
+        </div>
+    </div>
+    <div class="login-footer">
+        <button type="submit" id="login-button">Search</button>
+    </div>
+}
+
+<div class="pagination">
+    @Html.CreatePaginacaoLinks((ArthurFrederico.SIGA.Web.Models.Paginacao)ViewBag.Paginacao,
+    x => Url.Action("List", new {
+        pagina = x,
+        nome = Request.Params["nome"],
+        estado = Request.Params["estado"],
+        cep = Request.Params["cep"]
+    }))
+</div>

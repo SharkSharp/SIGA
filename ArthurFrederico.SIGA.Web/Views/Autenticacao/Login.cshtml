@@ -1,0 +1,53 @@
+﻿@model ArthurFrederico.SIGA.Web.Models.LoginViewModel
+
+@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+        <title>Login</title>
+    </head>
+    <body>
+
+        <div class="login-box">
+            <div class="login-box-title">
+                <span>S.I.G.A</span>
+            </div>
+            <div class="login-box-desc">
+                <span>Sistema Interno de Gestão de Alunos</span>
+            </div>
+            <div class="line"></div>
+
+            <div class="form">
+
+                @using (Html.BeginForm("Login", "Autenticacao", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "" }))
+                {
+                    <div class="form-input">
+                        <span class="email-label">
+                            E-mail
+                        </span>
+                        @Html.TextBoxFor(model => model.Nick, new { @class = "input-default", placeholder = "Nome, Email, CPF, Fone", name = "email" })
+                        @Html.ValidationMessageFor(model => model.Nick, "", new { @class = "", style = "color : red;" })
+                        <span class="password-label" id="passwordSpan">
+                            Senha
+                        </span>
+                        @Html.PasswordFor(model => model.Senha, new { @class = "input-default", name = "password", id = "passwordInput", placeholder = "Senha" })
+                        @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "", style = "color : red;" })
+                    </div>
+
+                    <div class="error-message">
+                        @Html.ValidationMessage("ModelError")
+                    </div>
+
+                    <div class="login-footer">
+                        <span class="register-span">Ainda não tem conta? @Html.ActionLink("Cadastre-se aqui!", "Create", "Usuario", new { }, new { @class = "register-link" })</span>
+                        <button type="submit" id="login-button">Entrar</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </body>
+</html>

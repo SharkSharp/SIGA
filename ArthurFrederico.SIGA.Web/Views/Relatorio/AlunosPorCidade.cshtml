@@ -1,0 +1,79 @@
+﻿@model IEnumerable<ArthurFrederico.SIGA.Model.AlunoModel>
+
+@{
+    ViewBag.Title = "Aluno List";
+}
+
+<div class="login-box-title">
+    <span>Relatorio</span>
+</div>
+@using (Html.BeginForm("AlunosPorCidade", "Relatorio", FormMethod.Get))
+{
+    <span>Cidade:</span>
+    @Html.DropDownList("idCidade", new SelectList(ViewBag.Cidades, "Id", "Nome"), new { @class = "input-cadastro" })
+    <div class="login-footer">
+        <button type="submit" id="login-button">Search</button>
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CidadeId)
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpf)
+            </td>
+            <td>
+                @String.Format("{0}", (item.Sexo) ? "Masculino" : "Feminino");
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCadastro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade.Nome)
+            </td>
+        </tr>
+    }
+
+</table>

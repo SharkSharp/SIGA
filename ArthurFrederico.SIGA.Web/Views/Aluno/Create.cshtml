@@ -1,0 +1,255 @@
+﻿@model ArthurFrederico.SIGA.Web.Models.CreateAlunoViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="login-box-title">
+    <span>
+        Create
+    </span>
+</div>
+
+@Html.ValidationMessage("ModelError")
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="login-box-desc">
+            <span>Anuno</span>
+        </div>
+        <div class="line"></div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-input-cadastro">
+            @Html.LabelFor(model => model.Aluno.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Aluno.Nome, new { htmlAttributes = new { @class = "input-cadastro" } })
+            <div class="error-message">
+                @Html.ValidationMessageFor(model => model.Aluno.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-input-cadastro">
+            @Html.LabelFor(model => model.Aluno.Rg, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Aluno.Rg, new { htmlAttributes = new { @class = "input-cadastro" } })
+            <div class="error-message">
+                @Html.ValidationMessageFor(model => model.Aluno.Rg, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-input-cadastro">
+            @Html.LabelFor(model => model.Aluno.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Aluno.Cpf, new { htmlAttributes = new { @class = "input-cadastro" } })
+            <div class="error-message">
+                @Html.ValidationMessageFor(model => model.Aluno.Cpf, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-input-cadastro">
+            @Html.LabelFor(model => model.Aluno.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Aluno.DataNascimento, new { htmlAttributes = new { @class = "input-cadastro" } })
+            <div class="error-message">
+                @Html.ValidationMessageFor(model => model.Aluno.DataNascimento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div id="tutor1">
+            <div class="line"></div>
+            <div class="login-box-desc">
+                <span>@Html.LabelFor(model => model.Aluno.Tutor1Id, htmlAttributes: new { @class = "" })</span>
+            </div>
+            <div class="line"></div>
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-input-cadastro">
+                    @Html.LabelFor(model => model.Tutor1.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Tutor1.Nome, new { htmlAttributes = new { @class = "input-cadastro" } })
+                    <div class="error-message">
+                        @Html.ValidationMessageFor(model => model.Tutor1.Nome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-input-cadastro">
+                    @Html.LabelFor(model => model.Tutor1.Rg, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Tutor1.Rg, new { htmlAttributes = new { @class = "input-cadastro" } })
+                    <div class="error-message">
+                        @Html.ValidationMessageFor(model => model.Tutor1.Rg, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-input-cadastro">
+                    @Html.LabelFor(model => model.Tutor1.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Tutor1.Cpf, new { htmlAttributes = new { @class = "input-cadastro" } })
+                    <div class="error-message">
+                        @Html.ValidationMessageFor(model => model.Tutor1.Cpf, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-input-cadastro">
+                    @Html.LabelFor(model => model.Tutor1.Sexo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="checkbox">
+                        @Html.Label("Masculino:")
+                        @Html.RadioButtonFor(model => model.Tutor1.Sexo, true)
+                        @Html.Label("Feminino:")
+                        @Html.RadioButtonFor(model => model.Tutor1.Sexo, false)
+                        <div class="error-message">
+                            @Html.ValidationMessageFor(model => model.Tutor1.Sexo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-input-cadastro">
+                    @Html.LabelFor(model => model.Tutor1.Profissao, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Tutor1.Profissao, new { htmlAttributes = new { @class = "input-cadastro" } })
+                    <div class="error-message">
+                        @Html.ValidationMessageFor(model => model.Tutor1.Profissao, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-input-cadastro">
+                    @Html.LabelFor(model => model.Tutor1.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Tutor1.Telefone, new { htmlAttributes = new { @class = "input-cadastro" } })
+                    <div class="error-message">
+                        @Html.ValidationMessageFor(model => model.Tutor1.Telefone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="line"></div>
+            </div>
+        </div>
+
+        <div id="tutor2">
+            <div class="login-box-desc">
+                <span>@Html.LabelFor(model => model.Aluno.Tutor2Id, htmlAttributes: new { @class = "" })</span>
+            </div>
+            <div class="form-horizontal">
+                <div class="line"></div>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-input-cadastro">
+                    @Html.LabelFor(model => model.Tutor2.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Tutor2.Nome, new { htmlAttributes = new { @class = "input-cadastro" } })
+                    <div class="error-message">
+                        @Html.ValidationMessageFor(model => model.Tutor2.Nome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-input-cadastro">
+                    @Html.LabelFor(model => model.Tutor2.Rg, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Tutor2.Rg, new { htmlAttributes = new { @class = "input-cadastro" } })
+                    <div class="error-message">
+                        @Html.ValidationMessageFor(model => model.Tutor2.Rg, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-input-cadastro">
+                    @Html.LabelFor(model => model.Tutor2.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Tutor2.Cpf, new { htmlAttributes = new { @class = "input-cadastro" } })
+                    <div class="error-message">
+                        @Html.ValidationMessageFor(model => model.Tutor2.Cpf, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-input-cadastro">
+                    @Html.LabelFor(model => model.Tutor2.Sexo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="checkbox">
+                        @Html.Label("Masculino:")
+                        @Html.RadioButtonFor(model => model.Tutor2.Sexo, true)
+                        @Html.Label("Feminino:")
+                        @Html.RadioButtonFor(model => model.Tutor2.Sexo, false)
+                        <div class="error-message">
+                            @Html.ValidationMessageFor(model => model.Tutor2.Sexo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-input-cadastro">
+                    @Html.LabelFor(model => model.Tutor2.Profissao, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Tutor2.Profissao, new { htmlAttributes = new { @class = "input-cadastro" } })
+                    <div class="error-message">
+                        @Html.ValidationMessageFor(model => model.Tutor2.Profissao, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-input-cadastro">
+                    @Html.LabelFor(model => model.Tutor2.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Tutor2.Telefone, new { htmlAttributes = new { @class = "input-cadastro" } })
+                    <div class="error-message">
+                        @Html.ValidationMessageFor(model => model.Tutor2.Telefone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="line"></div>
+            </div>
+        </div>
+
+        <div class="form-input-cadastro">
+            @Html.LabelFor(model => model.Aluno.EnderecoCompleto, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Aluno.EnderecoCompleto, new { htmlAttributes = new { @class = "input-cadastro" } })
+            <div class="error-message">
+                @Html.ValidationMessageFor(model => model.Aluno.EnderecoCompleto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-input-cadastro">
+            @Html.LabelFor(model => model.Aluno.CidadeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.DropDownListFor(model => model.Aluno.CidadeId, new SelectList(ViewBag.Cidades, "Id", "Nome"), new { @class = "input-cadastro" })
+            <div class="error-message">
+                @Html.ValidationMessageFor(model => model.Aluno.Cidade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-input-cadastro">
+            @Html.LabelFor(model => model.Aluno.Matricula, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Aluno.Matricula, new { htmlAttributes = new { @class = "input-cadastro" } })
+            <div class="error-message">
+                @Html.ValidationMessageFor(model => model.Aluno.Matricula, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-input-cadastro">
+            @Html.LabelFor(model => model.Aluno.Sexo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="checkbox">
+                @Html.Label("Masculino:")
+                @Html.RadioButtonFor(model => model.Aluno.Sexo, true)
+                @Html.Label("Feminino:")
+                @Html.RadioButtonFor(model => model.Aluno.Sexo, false)
+                <div class="error-message">
+                    @Html.ValidationMessageFor(model => model.Aluno.Sexo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-input-cadastro">
+            @Html.LabelFor(model => model.Aluno.Telefone1, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Aluno.Telefone1, new { htmlAttributes = new { @class = "input-cadastro" } })
+            <div class="error-message">
+                @Html.ValidationMessageFor(model => model.Aluno.Telefone1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-input-cadastro">
+            @Html.LabelFor(model => model.Aluno.Telefone2, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Aluno.Telefone2, new { htmlAttributes = new { @class = "input-cadastro" } })
+            <div class="error-message">
+                @Html.ValidationMessageFor(model => model.Aluno.Telefone2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-input-cadastro">
+            @Html.LabelFor(model => model.Aluno.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Aluno.Email, new { htmlAttributes = new { @class = "input-cadastro" } })
+            <div class="error-message">
+                @Html.ValidationMessageFor(model => model.Aluno.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="login-footer">
+            <button type="submit" id="login-button">Create</button>
+        </div>
+
+        <div class="form-link">
+            @Html.ActionLink("Back to List", "List")
+        </div>
+    </div>
+}
